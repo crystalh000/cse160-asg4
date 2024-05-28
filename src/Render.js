@@ -101,7 +101,7 @@ function renderAllShapes() {
     sky.color = [1.0,0.0,0.0,1.0];
     if (g_normalOn) sky.textureNum = -3;
     sky.textureNum = 2;
-    sky.matrix.scale(25,25,25);
+    sky.matrix.scale(-25,-25,-25);
     sky.matrix.translate(-0.5,-0.5,-0.5);
     sky.render();
   
