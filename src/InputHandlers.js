@@ -83,9 +83,17 @@ function handleMouseClick(event) {
 // Set up actions for the HTML UI elements
 function addActionsForHTMLUI() {
 
-    document.getElementById('normalOn').onclick = function() { g_normalOn = true; };
-    document.getElementById('normalOff').onclick = function() { g_normalOn = false; };
+    //document.getElementById('normalOn').onclick = function() { g_normalOn = true; };
+    document.getElementById('normalOn').onclick = function() {
+        g_normalOn = true;
+        console.log('Normals On:', g_normalOn);
+    };
+    //document.getElementById('normalOff').onclick = function() { g_normalOn = false; };
 
+    document.getElementById('normalOff').onclick = function() {
+        g_normalOn = false;
+        console.log('Normals Off:', g_normalOn);
+    };
     document.getElementById('animationYellowOffButton').onclick = function() {g_yellowAnimation=false;};
     document.getElementById('animationYellowOnButton').onclick = function() {g_yellowAnimation=true;};
   
@@ -101,6 +109,7 @@ function addActionsForHTMLUI() {
   
     document.getElementById('angleSlide').addEventListener('mousemove',  function() { g_globalAngle = this.value; renderAllShapes(); pickBlock(); });
     
+    canvas.onmousemove = function(ev) { if (ev.buttons == 1 ) {click(ev)}}
   }
   
 

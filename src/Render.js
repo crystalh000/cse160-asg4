@@ -57,7 +57,7 @@ function drawMap() {
             block.matrix.translate(0, -0.75, 0);
             block.matrix.scale(0.5, 0.5, 0.5);
             block.matrix.translate(x - 16, y, z - 16);
-            block.renderfast();
+            //block.renderfast();
             //block.render();
           }
         }
@@ -108,7 +108,7 @@ function renderAllShapes() {
   
     // draw the body cube
     // body.color = [1.0, 0.0, 0.0, 1.0];
-    body = new Cube();
+    var body = new Cube();
     body.color = [251/255, 231/255, 239/255, 1.0];
     if (g_normalOn) body.textureNum = -3;
     body.textureNum = 0;
