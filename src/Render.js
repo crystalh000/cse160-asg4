@@ -145,6 +145,7 @@ function renderAllShapes() {
   
     // Render the foot
     //footR.renderfast();
+    if (g_normalOn) footR.textureNum = -3;
     footR.render();
   
     // Left foot
@@ -163,6 +164,7 @@ function renderAllShapes() {
   
     // Render the foot
     //footL.renderfast();
+    if (g_normalOn) footL.textureNum = -3;
     footL.render();
   
   
@@ -178,6 +180,7 @@ function renderAllShapes() {
     armL.matrix.translate(0, -0.55, 0);
     armL.matrix.scale(0.1,0.4,0.15);
     //armL.renderfast();
+    if (g_normalOn) armL.textureNum = -3;
     armL.render();
   
   
@@ -192,6 +195,7 @@ function renderAllShapes() {
     armR.matrix.translate(0, -0.55, 0);
     armR.matrix.scale(0.1,0.4,0.15);
     //armR.renderfast();
+    if (g_normalOn) armR.textureNum = -3;
     armR.render();
   
     // draw the rabbit head
@@ -208,6 +212,7 @@ function renderAllShapes() {
     yellow.matrix.scale(0.45,0.45,0.45);
     yellow.matrix.translate(-0.5, 0 + 0.1,0);
     //yellow.renderfast();
+    if (g_normalOn) yellow.textureNum = -3;
     yellow.render();
   
     // draw tail 
@@ -219,6 +224,7 @@ function renderAllShapes() {
     // yellow.matrix.rotate(-5,1,0,0); // rotate the arm
     tail.matrix.scale(0.1,0.1,0.1);
     //tail.renderfast();
+    if (g_normalOn) tail.textureNum = -3;
     tail.render();
   
   
@@ -233,6 +239,7 @@ function renderAllShapes() {
     cone.matrix.rotate(-90,1,0,0); // Adjust the size of the cone
   
     cone.matrix.scale(0.2, 0.2, 0.2); // Adjust the size of the cone
+    if (g_normalOn) cone.textureNum = -3;
     cone.render();
   
     // Right ear
@@ -245,6 +252,7 @@ function renderAllShapes() {
     earR.matrix.rotate(-g_magentaAngleR,1,0,0);
     earR.matrix.scale(0.1,0.41,0.1);
     //earR.renderfast();
+    if (g_normalOn) earR.textureNum = -3;
     earR.render();
   
     // Left ear
@@ -257,6 +265,8 @@ function renderAllShapes() {
     earL.matrix.rotate(-g_magentaAngleL,1,0,0);
     earL.matrix.scale(0.1,0.41,0.1);
     //earL.renderfast();
+    if (g_normalOn) earL.textureNum = -3;
+
     earL.render();
   
     // check the time at the end of the function and show on web page
