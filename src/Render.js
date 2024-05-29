@@ -57,7 +57,7 @@ function drawMap() {
             block.matrix.translate(0, -0.75, 0);
             block.matrix.scale(0.5, 0.5, 0.5);
             block.matrix.translate(x - 16, y, z - 16);
-            //block.renderfast();
+            block.renderfast();
             //block.render();
           }
         }
@@ -123,6 +123,9 @@ function renderAllShapes() {
     var sphere = new Sphere();
     sphere.color = [1.0, 0.0, 0.0, 1.0];
     if (g_normalOn) body.textureNum = -3;
+    sphere.textureNum = 0;
+    sphere.render();
+
 
   
     // right foot
