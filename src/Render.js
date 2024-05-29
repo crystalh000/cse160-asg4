@@ -121,10 +121,10 @@ function renderAllShapes() {
 
     // draw the sphere
     var sphere = new Sphere();
-    sphere.color = [1.0, 0.0, 0.0, 1.0];
-    if (g_normalOn) body.textureNum = -3;
+    sphere.color = [1.0, 1.0, 1.0, 1.0];
+    if (g_normalOn) sphere.textureNum = -3;
     sphere.matrix.translate(-1.5, 1.5 , -0.3);
-    sphere.textureNum = 0;
+    //sphere.textureNum = 0;
     sphere.render();
 
 
