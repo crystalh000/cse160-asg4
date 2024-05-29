@@ -13,8 +13,8 @@ class Sphere{
         gl.uniform4f(u_FragColor, rgba[0], rgba[1], rgba[2], rgba[3]);
         gl.uniformMatrix4fv(u_ModelMatrix, false, this.matrix.elements);
 
-        var d=Math.PI/25;
-        var dd = Math.PI/25;
+        var d=Math.PI/10;
+        var dd = Math.PI/10;
 
         // UV coordinates but decided not to do texture mapping
 

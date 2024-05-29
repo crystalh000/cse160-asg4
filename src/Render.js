@@ -57,7 +57,7 @@ function drawMap() {
             block.matrix.translate(0, -0.75, 0);
             block.matrix.scale(0.5, 0.5, 0.5);
             block.matrix.translate(x - 16, y, z - 16);
-            block.renderfast();
+            //block.renderfast();
             //block.render();
           }
         }
@@ -80,8 +80,8 @@ function renderAllShapes() {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     
   
-    drawMap();
-    // drawCubes();
+    //drawMap();
+    //drawCubes();
     // generateRandomCubes();
     // initializeCubes();
     //drawCubes();
@@ -123,7 +123,7 @@ function renderAllShapes() {
     var sphere = new Sphere();
     sphere.color = [1.0, 1.0, 1.0, 1.0];
     if (g_normalOn) sphere.textureNum = -3;
-    sphere.matrix.translate(-1.5, 1.5 , -0.3);
+    sphere.matrix.translate(-1.5, 0.5 , -0.3);
     //sphere.textureNum = 0;
     sphere.render();
 
