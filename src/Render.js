@@ -99,8 +99,8 @@ function renderAllShapes() {
     // draw the sky 
     var sky = new Cube();
     sky.color = [1.0,0.0,0.0,1.0];
-    if (g_normalOn) sky.textureNum = -3;
     sky.textureNum = 2;
+    if (g_normalOn) sky.textureNum = -3;
     sky.matrix.scale(-25,-25,-25);
     sky.matrix.translate(-0.5,-0.5,-0.5);
     sky.render();
@@ -110,14 +110,20 @@ function renderAllShapes() {
     // body.color = [1.0, 0.0, 0.0, 1.0];
     var body = new Cube();
     body.color = [251/255, 231/255, 239/255, 1.0];
-    if (g_normalOn) body.textureNum = -3;
     body.textureNum = 0;
+    if (g_normalOn) body.textureNum = -3;
     body.matrix.translate(-0.25+0.0001, -0.75 + 0.2 + g_jumpHeight , 0.0);
     body.matrix.rotate(g_bodyAngle, 0, 0, 1);
     var bodyCoordinatesMat=new Matrix4(body.matrix);
     body.matrix.scale(0.5, 0.5, 0.5); // Adjusted scale to be the same in all dimensions
     //body.renderfast();
     body.render();
+
+    // draw the sphere
+    var sphere = new Sphere();
+    sphere.color = [1.0, 0.0, 0.0, 1.0];
+    if (g_normalOn) body.textureNum = -3;
+
   
     // right foot
     var footR = new Cube();
