@@ -12,6 +12,8 @@ var VSHADER_SOURCE = `
     uniform mat4 u_ViewMatrix;
     uniform mat4 u_ProjectionMatrix;
     uniform float u_Size;
+
+
     void main() {
         gl_Position = u_ProjectionMatrix * u_ViewMatrix * u_GlobalRotateMatrix * u_ModelMatrix * a_Position;
         v_UV = a_UV;
@@ -31,7 +33,11 @@ var FSHADER_SOURCE =`
   uniform sampler2D u_Sampler3;
   uniform sampler2D u_Sampler4;
   uniform int u_whichTexture;
+  uniform vec3 u_lightPos;
+
+
   void main() {
+
     if (u_whichTexture == -3) {
         gl_FragColor = vec4((v_Normal+1.0)/2.0, 1.0);  // use normal
     }

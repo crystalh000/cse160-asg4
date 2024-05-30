@@ -104,11 +104,19 @@ function addActionsForHTMLUI() {
     document.getElementById('animationRunOffButton').onclick = function() {g_runAnimation=false;};
     document.getElementById('animationRunOnButton').onclick = function() {g_runAnimation=true;};
   
-    document.getElementById('yellowSlide').addEventListener('mousemove', function() { g_yellowAngle = this.value; renderAllShapes(); });
-    document.getElementById('magentaSlide').addEventListener('mousemove', function() { g_magentaAngleR = this.value; g_magentaAngleL = this.value; renderAllShapes(); });
-  
     document.getElementById('angleSlide').addEventListener('mousemove',  function() { g_globalAngle = this.value; renderAllShapes(); pickBlock(); });
+
+    // color slider events
+   
+    document.getElementById('yellowSlide').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_yellowAngle = this.value; renderAllShapes(); } });
+    document.getElementById('magentaSlide').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_magentaAngleR = this.value; g_magentaAngleL = this.value; renderAllShapes(); } });
+    document.getElementById('lightSlideX').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[0] = this.value / 100 ; renderAllShapes(); } });
+    document.getElementById('lightSlideY').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[1] = this.value / 100; renderAllShapes(); } });
+    document.getElementById('lightSlideZ').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[2] = this.value / 100; renderAllShapes(); } });
+
+
     
+
     canvas.onmousemove = function(ev) { if (ev.buttons == 1 ) {click(ev)}}
   }
   

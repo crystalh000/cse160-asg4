@@ -102,6 +102,13 @@ function connectVariablesToGLSL() {
        console.log('Failed to get the storage location of u_Sampler3');
        return;
      }
+
+     // Get the storage location of u_FragColor
+    u_lightPos = gl.getUniformLocation(gl.program, 'u_lightPos');
+    if (!u_lightPos) {
+      console.log('Failed to get the storage location of u_lightPos');
+      return;
+    }
   
   
      
