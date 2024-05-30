@@ -9,7 +9,7 @@ function setUpWebGL() {
     gl.enable(gl.DEPTH_TEST);
     gl.clear(gl.DEPTH_BUFFER_BIT);
     // generate initial random cubes
-    generateRandomCubes();
+    //generateRandomCubes();
  }
 
 function connectVariablesToGLSL() {

@@ -39,6 +39,7 @@
   // called by browser repeatedly whenever it's time
 
 function tick() {
+  g_seconds = performance.now() / 1000.0 - g_startTime;
   updateAnimationAngles();
   // draw everything
   renderAllShapes();
@@ -126,8 +127,8 @@ function main() {
 
   gl.clearColor(0.0, 0.0, 0.0, 1.0);
   
-  generateRandomCubes();
-  initializeCubes();
+  //generateRandomCubes();
+  //initializeCubes();
 
   // Set up actions for the HTML UI Elements
   addActionsForHTMLUI();
@@ -136,11 +137,13 @@ function main() {
   // document.onkeydown = keydown;
 
 
-  var tick = function() {
-    updateAnimationAngles();
-    renderAllShapes();
-    requestAnimationFrame(tick);
-  }
+  // var tick = function() {
+  //   updateAnimationAngles();
+  //   renderAllShapes();
+  //   requestAnimationFrame(tick);
+  // }
 
   tick();
 }
+
+window.onload = main;
