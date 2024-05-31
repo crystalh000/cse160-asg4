@@ -40,10 +40,15 @@ var FSHADER_SOURCE =`
 
   uniform int u_whichTexture;
   uniform vec3 u_lightPos;
+  uniform vec3 u_spotlightPos;
   uniform vec3 u_cameraPos;
   varying vec4 v_VertPos;
   uniform bool u_lightOn;
   uniform vec3 u_lightColor;
+
+  // attempting to implement spotlight
+  uniform vec3 u_lightDirection;
+  uniform float u_limit; // in dot space
 
   void main() {
 
@@ -70,14 +75,9 @@ var FSHADER_SOURCE =`
     }
 
     vec3 lightVector = u_lightPos - vec3(v_VertPos);
+    vec3 spotlightVector = u_spotlightPos - vec3(v_VertPos);
+
     float r = length(lightVector);
-    
-    
-    // if (r < 1.0) {
-    //     gl_FragColor = vec4(1,0,0,1);
-    // } else if (r < 2.0) {
-    //     gl_FragColor = vec4(0,1,0,1);
-    // } 
 
     // N dot L
 
@@ -89,22 +89,43 @@ var FSHADER_SOURCE =`
     vec3 R = reflect(-L,N);
 
     // eye
-    vec3 E = normalize(u_cameraPos - vec3(v_VertPos));
+    vec3 E = normalize(u_cameraPos - vec3(v_VertPos)); // half vector is E
 
     // specular
+    // u_shiniess is always 64.0
     float specular = pow(max(dot(E,R), 0.0), 64.0) * 0.8;
     //vec3 u_lightColor = vec3(1.0, 0.0, 0.0);
+    
+    // diffuse
     vec3 diffuse = vec3(1.0, 1.0, 0.9) * vec3(gl_FragColor) * nDotL * 0.7 * u_lightColor;
+    
+    // ambient
     vec3 ambient = vec3(gl_FragColor) * 0.2 * u_lightColor; // do the u_lightColor for diffuse, ambient, and specular
     //gl_FragColor = vec4(specular+diffuse+ambient, 1.0);
     // gl_FragColor = gl_FragColor * nDotL;
     // gl_FragColor.a = 1.0;
+
+    // spotlight
+    float dotFromDirection = dot(normalize(spotlightVector), -u_lightDirection);
+    float spotlightEffect = 0.0;
+
+    if (dotFromDirection >= u_limit) {
+        //spotlightEffect = 1.0;
+        if (nDotL > 0.0) {
+            spotlightEffect = pow(dot(N, E), 64.0);
+        }
+
+    }
+
     if (u_lightOn) {
         if (u_whichTexture == 2) {
             // diffuse and specular care about normals, ambient doing most of work
             gl_FragColor = vec4(diffuse + ambient, 1.0);
         } else {
-            gl_FragColor = vec4(diffuse + specular + ambient, 1.0);
+            //gl_FragColor = vec4(diffuse + specular + ambient, 1.0);
+            vec3 spotlight = spotlightEffect * vec3(gl_FragColor);
+            gl_FragColor = vec4((diffuse + specular + ambient + spotlight), 1.0);
+            // can add a slider for the spotlight
         }
 
     }

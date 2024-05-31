@@ -109,6 +109,14 @@ function connectVariablesToGLSL() {
       console.log('Failed to get the storage location of u_lightPos');
       return;
     }
+
+    u_spotlightPos = gl.getUniformLocation(gl.program, 'u_spotlightPos');
+    if (!u_spotlightPos) {
+      console.log('Failed to get the storage location of u_spotlightPos');
+      return;
+    }
+
+    gl.uniform3fv(u_spotlightPos, [0.0, 3.0, 0.0]);
   
      // Get the storage location of 
      u_cameraPos = gl.getUniformLocation(gl.program, 'u_cameraPos');
@@ -137,7 +145,26 @@ function connectVariablesToGLSL() {
     }
 
 
-  
+    // for spotlight attempt
+    var lightDirection = [1.0, -1.0, 0.0];
+    var limit = 20 * Math.PI / 180;
+
+    u_lightDirection = gl.getUniformLocation(gl.program, 'u_lightDirection');
+    if (!u_lightDirection) {
+        console.log('Failed to get the storage location of u_lightDirection');
+        return;
+    }
+
+    u_limit = gl.getUniformLocation(gl.program, 'u_limit'); // memory location of u_limit
+    if (!u_limit) {
+        console.log('Failed to get the storage location of u_limit');
+        return;
+    }
+    gl.uniform3fv(u_lightDirection, lightDirection);
+    gl.uniform1f(u_limit, Math.cos(limit));
+    
+
+    
      
     var identityM = new Matrix4();
     gl.uniformMatrix4fv(u_ModelMatrix, false, identityM.elements);

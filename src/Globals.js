@@ -19,6 +19,9 @@ let u_Sampler3;
 let u_Sampler4;
 let u_lightPos;
 let u_lightColor;
+let u_lightDirection;
+let u_limit; 
+let u_spotlightPos;
 
 
 
