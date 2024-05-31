@@ -85,6 +85,9 @@ function renderAllShapes() {
     // pass camera position to GLSL
     gl.uniform3f(u_cameraPos, g_camera.eye.x, g_camera.eye.y, g_camera.eye.z);
 
+    // pass the light status
+    gl.uniform1i(u_lightOn, g_lightOn);
+
     // draw the light
     var light = new Cube();
     light.color = [2,2,0,1];

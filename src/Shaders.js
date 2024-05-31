@@ -38,6 +38,7 @@ var FSHADER_SOURCE =`
   uniform vec3 u_lightPos;
   uniform vec3 u_cameraPos;
   varying vec4 v_VertPos;
+  uniform bool u_lightOn;
 
   void main() {
 
@@ -86,12 +87,18 @@ var FSHADER_SOURCE =`
     vec3 E = normalize(u_cameraPos - vec3(v_VertPos));
 
     // specular
-    float specular = pow(max(dot(E,R), 0.0), 10.0);
+    float specular = pow(max(dot(E,R), 0.0), 64.0) * 0.8;
 
-
-    vec3 diffuse = vec3(gl_FragColor) * nDotL * 0.7;
-    vec3 ambient = vec3(gl_FragColor) * 0.3;
-    gl_FragColor = vec4(specular+diffuse+ambient, 1.0);
+    vec3 diffuse = vec3(1.0, 1.0. 0.9) * vec3(gl_FragColor) * nDotL * 0.7;
+    vec3 ambient = vec3(gl_FragColor) * 0.2;
+    //gl_FragColor = vec4(specular+diffuse+ambient, 1.0);
     // gl_FragColor = gl_FragColor * nDotL;
     // gl_FragColor.a = 1.0;
+    if (u_lightOn) {
+        if (u_whichTexture == 0) {
+            gl_FragColor = vec4(specular + diffuse + ambient, 1.0);
+        } else {
+            gl_FragColor = vec4(diffuse + ambient, 1.0);
+        }
+    }
   }`

@@ -94,6 +94,17 @@ function addActionsForHTMLUI() {
         g_normalOn = false;
         console.log('Normals Off:', g_normalOn);
     };
+
+    document.getElementById('lightOn').onclick = function() {
+        g_lightOn = true;
+        console.log('Lights On:', g_lightOn);
+    };
+    //document.getElementById('normalOff').onclick = function() { g_normalOn = false; };
+
+    document.getElementById('lightOff').onclick = function() {
+        g_lightOff = false;
+        console.log('Normals Off:', g_lightOn);
+    };
     document.getElementById('animationYellowOffButton').onclick = function() {g_yellowAnimation=false;};
     document.getElementById('animationYellowOnButton').onclick = function() {g_yellowAnimation=true;};
   

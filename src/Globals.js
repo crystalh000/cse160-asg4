@@ -44,6 +44,7 @@ var g_jumpHeight = 0;
 var animalXRotation = 0;
 var animalYRotation = 0;
 let g_normalOn = false;
+let g_lightOn = false;
 
 let cubesData = [];
 const numCubes = 12; // Number of cubes to generate
@@ -68,3 +69,4 @@ let g_mapInitialized = false;
 let g_lightPos = [0,1.5,1];
 
 let u_cameraPos;
+let u_lightOn;
