@@ -14,11 +14,11 @@ var VSHADER_SOURCE = `
     uniform mat4 u_ProjectionMatrix;
     uniform float u_Size;
 
-
     void main() {
         gl_Position = u_ProjectionMatrix * u_ViewMatrix * u_GlobalRotateMatrix * u_ModelMatrix * a_Position;
         v_UV = a_UV;
         v_Normal = a_Normal;
+        //v_Normal = normalize(mat3(u_ModelMatrix) * a_Normal); // Correct normal transformation
         v_VertPos = u_ModelMatrix * a_Position;
     }`
 
@@ -36,8 +36,8 @@ var FSHADER_SOURCE =`
   uniform sampler2D u_Sampler4;
   uniform int u_whichTexture;
   uniform vec3 u_lightPos;
+  uniform vec3 u_cameraPos;
   varying vec4 v_VertPos;
-
 
   void main() {
 
@@ -63,11 +63,35 @@ var FSHADER_SOURCE =`
         gl_FragColor = vec4(1,0.2,0.2,1); // error, put reddish
     }
 
-    vec3 lightVector = vec3(v_VertPos) - u_lightPos;
+    vec3 lightVector = u_lightPos - vec3(v_VertPos);
     float r = length(lightVector);
-    if (r < 1.0) {
-        gl_FragColor = vec4(1,0,0,1);
-    } else if (r < 2.0) {
-        gl_FragColor = vec4(0,1,0,1);
-    } 
+    
+    
+    // if (r < 1.0) {
+    //     gl_FragColor = vec4(1,0,0,1);
+    // } else if (r < 2.0) {
+    //     gl_FragColor = vec4(0,1,0,1);
+    // } 
+
+    // N dot L
+
+    vec3 L = normalize(lightVector);
+    vec3 N = normalize(v_Normal);
+    float nDotL = max(dot(N,L), 0.0);
+
+    // reflection
+    vec3 R = reflect(-L,N);
+
+    // eye
+    vec3 E = normalize(u_cameraPos - vec3(v_VertPos));
+
+    // specular
+    float specular = pow(max(dot(E,R), 0.0), 10.0);
+
+
+    vec3 diffuse = vec3(gl_FragColor) * nDotL * 0.7;
+    vec3 ambient = vec3(gl_FragColor) * 0.3;
+    gl_FragColor = vec4(specular+diffuse+ambient, 1.0);
+    // gl_FragColor = gl_FragColor * nDotL;
+    // gl_FragColor.a = 1.0;
   }`

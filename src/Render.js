@@ -82,12 +82,15 @@ function renderAllShapes() {
     // Pass the light position to GLSL
     gl.uniform3f(u_lightPos, g_lightPos[0], g_lightPos[1], g_lightPos[2]);
     
+    // pass camera position to GLSL
+    gl.uniform3f(u_cameraPos, g_camera.eye.x, g_camera.eye.y, g_camera.eye.z);
+
     // draw the light
     var light = new Cube();
     light.color = [2,2,0,1];
     light.textureNum = -2;
     light.matrix.translate(g_lightPos[0], g_lightPos[1], g_lightPos[2]);
-    light.matrix.scale(0.1,0.1,0.1);
+    light.matrix.scale(-0.1,-0.1,-0.1);
     light.matrix.translate(-0.5,-0.5,-0.5);
     light.render();
   

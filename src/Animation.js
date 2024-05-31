@@ -13,9 +13,9 @@ function updateAnimationAngles() {
       g_magentaAngleR = (25 * Math.sin(3 * g_seconds));
       g_magentaAngleL = (25 * Math.sin(3 * g_seconds));
     }
-    console.log("Seconds: " + g_seconds);
+    //console.log("Seconds: " + g_seconds);
 
-    g_lightPos[0] = Math.cos(g_seconds);
+    g_lightPos[0] = 2.3 * Math.cos(g_seconds);
 
     if (g_runAnimation) {
       console.log("Run animation started");

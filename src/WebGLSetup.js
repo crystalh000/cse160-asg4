@@ -110,6 +110,12 @@ function connectVariablesToGLSL() {
       return;
     }
   
+     // Get the storage location of 
+     u_cameraPos = gl.getUniformLocation(gl.program, 'u_cameraPos');
+     if (!u_lightPos) {
+       console.log('Failed to get the storage location of u_cameraPos');
+       return;
+     }
   
      
     var identityM = new Matrix4();

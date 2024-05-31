@@ -65,4 +65,6 @@ var g_selected = null;
 var g_buildHeight = 10;
 let g_map;
 let g_mapInitialized = false;
-let g_lightPos = [0,1,-2];
+let g_lightPos = [0,1.5,1];
+
+let u_cameraPos;

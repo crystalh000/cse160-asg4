@@ -157,7 +157,7 @@ class Cube {
 
         );
 
-        gl.uniform4f(u_FragColor, rgba[0]* 0.9, rgba[1]* 0.9, rgba[2]* 0.9, rgba[3]);
+        //gl.uniform4f(u_FragColor, rgba[0]* 0.9, rgba[1]* 0.9, rgba[2]* 0.9, rgba[3]);
 
         // top of cube
 
@@ -174,7 +174,7 @@ class Cube {
         );
 
         // right of cube
-        gl.uniform4f(u_FragColor, rgba[0]* 0.8, rgba[1]* 0.8, rgba[2]* 0.8, rgba[3]);
+        //gl.uniform4f(u_FragColor, rgba[0]* 0.8, rgba[1]* 0.8, rgba[2]* 0.8, rgba[3]);
         drawTriangle3DUVNormal(
             [0,0,0,   0,1,1,   0,1,0],
             [0,0,1,   1,1,0],
@@ -189,7 +189,7 @@ class Cube {
 
         // left of cube
 
-        gl.uniform4f(u_FragColor, rgba[0]* 0.7, rgba[1]* 0.7, rgba[2]* 0.7, rgba[3]);
+        //gl.uniform4f(u_FragColor, rgba[0]* 0.7, rgba[1]* 0.7, rgba[2]* 0.7, rgba[3]);
         drawTriangle3DUVNormal(
             [1,0,0,   1,1,1,   1,1,0],
             [0,0,1,   1,1,0],
@@ -204,7 +204,7 @@ class Cube {
 
         // bottom of cube
 
-        gl.uniform4f(u_FragColor, rgba[0]* 0.6, rgba[1]* 0.6, rgba[2]* 0.6, rgba[3]);
+        //gl.uniform4f(u_FragColor, rgba[0]* 0.6, rgba[1]* 0.6, rgba[2]* 0.6, rgba[3]);
         drawTriangle3DUVNormal(
             [0,0,0,   1,0,1,   0,0,1],
             [0,0,1,   1,1,0],
@@ -217,7 +217,7 @@ class Cube {
             [0,-1,0,   0,-1,0, 0,-1,0]
         );
 
-        gl.uniform4f(u_FragColor, rgba[0]* 0.5, rgba[1]* 0.5, rgba[2]* 0.5, rgba[3]);
+        //gl.uniform4f(u_FragColor, rgba[0]* 0.5, rgba[1]* 0.5, rgba[2]* 0.5, rgba[3]);
 
         // back 
         drawTriangle3DUVNormal(
