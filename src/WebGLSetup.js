@@ -143,8 +143,8 @@ function connectVariablesToGLSL() {
     gl.uniformMatrix4fv(u_ModelMatrix, false, identityM.elements);
 
     // delete later, just for testing light sliders
-    var lightColor = [1.0, 0.0, 0.0];
-    gl.uniform3fv(u_lightColor, lightColor); // fv makes it easier to pass in
+    // var lightColor = [1.0, 0.0, 0.0];
+    // gl.uniform3fv(u_lightColor, lightColor); // fv makes it easier to pass in
   //   gl.uniformMatrix4fv(u_ViewMatrix, false, identityM.elements);
     
   }

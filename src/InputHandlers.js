@@ -141,10 +141,7 @@ function addActionsForHTMLUI() {
     const green = document.getElementById('greenColorSlide').value / 100;
     const blue = document.getElementById('blueColorSlide').value / 100;
     g_lightColor = [red, green, blue];
-    
   
-    // Redraw or re-render your scene if necessary
-    renderScene();
   }
   
 
