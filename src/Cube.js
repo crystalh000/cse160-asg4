@@ -43,7 +43,9 @@ class Cube {
 
         // Pass the color of a point to u_FragColor variable 
         gl.uniform4f(u_FragColor, rgba[0], rgba[1], rgba[2], rgba[3]);
-        gl.uniformMatrix4fv(u_ModelMatrix, false, this.matrix.elements);    
+        gl.uniformMatrix4fv(u_ModelMatrix, false, this.matrix.elements);  
+        gl.uniformMatrix4fv(u_NormalMatrix, false, this.normalMatrix.elements);  
+
 
         // rewrote the below part to use 3DUV properly using Microsoft Copilot because i was having drawing issues
 

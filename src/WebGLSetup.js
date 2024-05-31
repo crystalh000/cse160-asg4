@@ -123,6 +123,12 @@ function connectVariablesToGLSL() {
       return;
     }
 
+    u_lightColor = gl.getUniformLocation(gl.program, 'u_lightColor');
+    if (!u_lightColor) {
+      console.log('Failed to get the storage location of u_lightOn');
+      return;
+    }
+
 
     u_NormalMatrix = gl.getUniformLocation(gl.program, 'u_NormalMatrix');
     if (!u_NormalMatrix) {
@@ -130,10 +136,15 @@ function connectVariablesToGLSL() {
         return;
     }
 
+
   
      
     var identityM = new Matrix4();
     gl.uniformMatrix4fv(u_ModelMatrix, false, identityM.elements);
+
+    // delete later, just for testing light sliders
+    var lightColor = [1.0, 0.0, 0.0];
+    gl.uniform3fv(u_lightColor, lightColor); // fv makes it easier to pass in
   //   gl.uniformMatrix4fv(u_ViewMatrix, false, identityM.elements);
     
   }

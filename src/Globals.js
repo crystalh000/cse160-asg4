@@ -18,6 +18,7 @@ let u_Sampler2;
 let u_Sampler3;
 let u_Sampler4;
 let u_lightPos;
+let u_lightColor;
 
 
 
@@ -45,6 +46,7 @@ var animalXRotation = 0;
 var animalYRotation = 0;
 let g_normalOn = false;
 let g_lightOn = false;
+let g_lightColor = [1,0,0];
 
 let cubesData = [];
 const numCubes = 12; // Number of cubes to generate

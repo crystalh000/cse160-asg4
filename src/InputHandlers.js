@@ -102,7 +102,7 @@ function addActionsForHTMLUI() {
     //document.getElementById('normalOff').onclick = function() { g_normalOn = false; };
 
     document.getElementById('lightOff').onclick = function() {
-        g_lightOff = false;
+        g_lightOn = false;
         console.log('Normals Off:', g_lightOn);
     };
     document.getElementById('animationYellowOffButton').onclick = function() {g_yellowAnimation=false;};
@@ -125,10 +125,26 @@ function addActionsForHTMLUI() {
     document.getElementById('lightSlideY').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[1] = this.value / 100; renderAllShapes(); } });
     document.getElementById('lightSlideZ').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[2] = this.value / 100; renderAllShapes(); } });
 
+    // document.getElementById('redColorSlide').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[2] = this.value / 100; renderAllShapes(); } });
+    // document.getElementById('greenColorSlide').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[2] = this.value / 100; renderAllShapes(); } });
+    // document.getElementById('blueColorSlide').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[2] = this.value / 100; renderAllShapes(); } });
 
-    
+    document.getElementById('redColorSlide').addEventListener('input', updateLightColor);
+    document.getElementById('greenColorSlide').addEventListener('input', updateLightColor);
+    document.getElementById('blueColorSlide').addEventListener('input', updateLightColor);
 
     canvas.onmousemove = function(ev) { if (ev.buttons == 1 ) {click(ev)}}
+  }
+  
+  function updateLightColor() {
+    const red = document.getElementById('redColorSlide').value / 100;
+    const green = document.getElementById('greenColorSlide').value / 100;
+    const blue = document.getElementById('blueColorSlide').value / 100;
+    g_lightColor = [red, green, blue];
+    
+  
+    // Redraw or re-render your scene if necessary
+    renderScene();
   }
   
 

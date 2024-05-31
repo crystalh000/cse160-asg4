@@ -83,10 +83,13 @@ function renderAllShapes() {
     gl.uniform3f(u_lightPos, g_lightPos[0], g_lightPos[1], g_lightPos[2]);
     
     // pass camera position to GLSL
-    gl.uniform3f(u_cameraPos, g_camera.eye.x, g_camera.eye.y, g_camera.eye.z);
+    gl.uniform3f(u_cameraPos, g_camera.eye.elements[0], g_camera.eye.elements[1], g_camera.eye.elements[2]);
 
     // pass the light status
     gl.uniform1i(u_lightOn, g_lightOn);
+
+    // pass color to GLSL 
+    gl.uniform3fv(u_lightColor, g_lightColor);
 
     // draw the light
     var light = new Cube();
@@ -108,7 +111,7 @@ function renderAllShapes() {
     floor.color = [1.0, 0.0, 0.0, 1.0];
     floor.textureNum = 1;
     floor.matrix.translate(0,-0.75,0.0);
-    floor.matrix.scale(12,0,12);
+    floor.matrix.scale(12,0.001,12);
     floor.matrix.translate(-0.5,0,-0.5);
     floor.render();
   
@@ -142,6 +145,8 @@ function renderAllShapes() {
     if (g_normalOn) sphere.textureNum = -3;
     sphere.matrix.translate(-1.5, 0.5 , -0.3);
     //sphere.textureNum = 0;
+    //sphere.normalMatrix.setInverseOf(sphere.matrix).transpose;
+
     sphere.render();
 
 
@@ -163,6 +168,8 @@ function renderAllShapes() {
     // Render the foot
     //footR.renderfast();
     if (g_normalOn) footR.textureNum = -3;
+    footR.normalMatrix.setInverseOf(footR.matrix).transpose;
+
     footR.render();
   
     // Left foot
@@ -182,6 +189,8 @@ function renderAllShapes() {
     // Render the foot
     //footL.renderfast();
     if (g_normalOn) footL.textureNum = -3;
+    footL.normalMatrix.setInverseOf(footL.matrix).transpose; // for rotation and scaling 
+
     footL.render();
   
   
@@ -198,6 +207,8 @@ function renderAllShapes() {
     armL.matrix.scale(0.1,0.4,0.15);
     //armL.renderfast();
     if (g_normalOn) armL.textureNum = -3;
+    armL.normalMatrix.setInverseOf(armL.matrix).transpose;
+
     armL.render();
   
   
@@ -213,6 +224,8 @@ function renderAllShapes() {
     armR.matrix.scale(0.1,0.4,0.15);
     //armR.renderfast();
     if (g_normalOn) armR.textureNum = -3;
+    armR.normalMatrix.setInverseOf(armR.matrix).transpose;
+
     armR.render();
   
     // draw the rabbit head
@@ -230,7 +243,7 @@ function renderAllShapes() {
     yellow.matrix.translate(-0.5, 0 + 0.1,0);
     //yellow.renderfast();
     if (g_normalOn) yellow.textureNum = -3;
-    //yellow.normalMatrix.setInverseOf(yellow.matrix).transpose;
+    yellow.normalMatrix.setInverseOf(yellow.matrix).transpose;
     yellow.render();
   
     // draw tail 
@@ -243,6 +256,8 @@ function renderAllShapes() {
     tail.matrix.scale(0.1,0.1,0.1);
     //tail.renderfast();
     if (g_normalOn) tail.textureNum = -3;
+    tail.normalMatrix.setInverseOf(tail.matrix).transpose;
+
     tail.render();
   
   
@@ -258,6 +273,8 @@ function renderAllShapes() {
   
     cone.matrix.scale(0.2, 0.2, 0.2); // Adjust the size of the cone
     if (g_normalOn) cone.textureNum = -3;
+    //cone.normalMatrix.setInverseOf(cone.matrix).transpose;
+
     cone.render();
   
     // Right ear
@@ -271,6 +288,8 @@ function renderAllShapes() {
     earR.matrix.scale(0.1,0.41,0.1);
     //earR.renderfast();
     if (g_normalOn) earR.textureNum = -3;
+    earR.normalMatrix.setInverseOf(earR.matrix).transpose;
+
     earR.render();
   
     // Left ear
@@ -284,6 +303,8 @@ function renderAllShapes() {
     earL.matrix.scale(0.1,0.41,0.1);
     //earL.renderfast();
     if (g_normalOn) earL.textureNum = -3;
+    earL.normalMatrix.setInverseOf(earL.matrix).transpose;
+
 
     earL.render();
   
