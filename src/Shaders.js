@@ -29,11 +29,13 @@ var FSHADER_SOURCE =`
   varying vec2 v_UV;
   varying vec3 v_Normal;
   uniform vec4 u_FragColor;
+
   uniform sampler2D u_Sampler0;
   uniform sampler2D u_Sampler1;
   uniform sampler2D u_Sampler2;
   uniform sampler2D u_Sampler3;
   uniform sampler2D u_Sampler4;
+
   uniform int u_whichTexture;
   uniform vec3 u_lightPos;
   uniform vec3 u_cameraPos;
@@ -57,9 +59,9 @@ var FSHADER_SOURCE =`
         gl_FragColor = texture2D(u_Sampler2, v_UV); // use texture2 for sky
     } else if (u_whichTexture == 3) {
       gl_FragColor = texture2D(u_Sampler3, v_UV); // use texture3 for wall
-  } else if (u_whichTexture == 4) {
-        gl_FragColor = texture2D(u_Sampler4, v_UV); // use texture4 for ground
-  }
+    } else if (u_whichTexture == 4) {
+            gl_FragColor = texture2D(u_Sampler4, v_UV); // use texture4 for ground
+    }
     else {
         gl_FragColor = vec4(1,0.2,0.2,1); // error, put reddish
     }
@@ -89,7 +91,7 @@ var FSHADER_SOURCE =`
     // specular
     float specular = pow(max(dot(E,R), 0.0), 64.0) * 0.8;
 
-    vec3 diffuse = vec3(1.0, 1.0. 0.9) * vec3(gl_FragColor) * nDotL * 0.7;
+    vec3 diffuse = vec3(1.0, 1.0, 0.9) * vec3(gl_FragColor) * nDotL * 0.7;
     vec3 ambient = vec3(gl_FragColor) * 0.2;
     //gl_FragColor = vec4(specular+diffuse+ambient, 1.0);
     // gl_FragColor = gl_FragColor * nDotL;
@@ -100,5 +102,9 @@ var FSHADER_SOURCE =`
         } else {
             gl_FragColor = vec4(diffuse + ambient, 1.0);
         }
+
+    }
+    else {
+        gl_FragColor = vec4(diffuse + ambient, 1.0);
     }
   }`
