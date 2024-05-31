@@ -73,5 +73,7 @@ let g_map;
 let g_mapInitialized = false;
 let g_lightPos = [0,1.5,1];
 
+let g_spotlightPos = [0,3,0];
+
 let u_cameraPos;
 let u_lightOn;

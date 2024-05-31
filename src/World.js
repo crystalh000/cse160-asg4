@@ -108,7 +108,7 @@ function main() {
   g_camera = new Camera(canvas); // recommended from ChatGPT
   connectVariablesToGLSL();
   //canvas = document.getElementById('webgl');
-  canvas = document.getElementById('webgl');
+  //canvas = document.getElementById('webgl');
   if (canvas) {
     canvas.addEventListener('click', handleMouseClick);
     canvas.addEventListener('mousedown', function(event) {

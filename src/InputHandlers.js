@@ -125,6 +125,10 @@ function addActionsForHTMLUI() {
     document.getElementById('lightSlideY').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[1] = this.value / 100; renderAllShapes(); } });
     document.getElementById('lightSlideZ').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[2] = this.value / 100; renderAllShapes(); } });
 
+    document.getElementById('spotlightSlideX').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_spotlightPos[0] = this.value / 100 ; renderAllShapes(); } });
+    document.getElementById('spotlightSlideY').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_spotlightPos[1] = this.value / 100; renderAllShapes(); } });
+    document.getElementById('spotlightSlideZ').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_spotlightPos[2] = this.value / 100; renderAllShapes(); } });
+
     // document.getElementById('redColorSlide').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[2] = this.value / 100; renderAllShapes(); } });
     // document.getElementById('greenColorSlide').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[2] = this.value / 100; renderAllShapes(); } });
     // document.getElementById('blueColorSlide').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[2] = this.value / 100; renderAllShapes(); } });

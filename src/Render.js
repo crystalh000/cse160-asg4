@@ -81,7 +81,9 @@ function renderAllShapes() {
     
     // Pass the light position to GLSL
     gl.uniform3f(u_lightPos, g_lightPos[0], g_lightPos[1], g_lightPos[2]);
-    
+
+    gl.uniform3f(u_spotlightPos, g_spotlightPos[0], g_spotlightPos[1], g_spotlightPos[2]);
+    //gl.uniform3fv(u_spotlightPos, g_spotlightPos);
     // pass camera position to GLSL
     gl.uniform3f(u_cameraPos, g_camera.eye.elements[0], g_camera.eye.elements[1], g_camera.eye.elements[2]);
 
@@ -104,7 +106,9 @@ function renderAllShapes() {
     var spotlight = new Cube();
     spotlight.color = [1,0,0,1];
     spotlight.textureNum = -2;
-    spotlight.matrix.translate(0,3,0);
+    //spotlight.matrix.translate(0,3,0);
+    spotlight.matrix.translate(g_spotlightPos[0], g_spotlightPos[1], g_spotlightPos[2]);
+
     spotlight.matrix.scale(-0.1,-0.1,-0.1);
     spotlight.matrix.translate(-0.5,-0.5,-0.5);
     spotlight.render();

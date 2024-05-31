@@ -14,6 +14,7 @@ function setUpWebGL() {
 
 function connectVariablesToGLSL() {
     // Initialize shaders
+    debugger;
     if (!initShaders(gl, VSHADER_SOURCE, FSHADER_SOURCE)) {
       console.log('Failed to intialize shaders.');
       return;
@@ -116,7 +117,7 @@ function connectVariablesToGLSL() {
       return;
     }
 
-    gl.uniform3fv(u_spotlightPos, [0.0, 3.0, 0.0]);
+    //gl.uniform3fv(u_spotlightPos, [0.0, 3.0, 0.0]);
   
      // Get the storage location of 
      u_cameraPos = gl.getUniformLocation(gl.program, 'u_cameraPos');
@@ -162,8 +163,6 @@ function connectVariablesToGLSL() {
     }
     gl.uniform3fv(u_lightDirection, lightDirection);
     gl.uniform1f(u_limit, Math.cos(limit));
-    
-
     
      
     var identityM = new Matrix4();
