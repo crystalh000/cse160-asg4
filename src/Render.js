@@ -99,6 +99,16 @@ function renderAllShapes() {
     light.matrix.scale(-0.1,-0.1,-0.1);
     light.matrix.translate(-0.5,-0.5,-0.5);
     light.render();
+
+    // draw spotlight cube
+    var spotlight = new Cube();
+    spotlight.color = [1,0,0,1];
+    spotlight.textureNum = -2;
+    spotlight.matrix.translate(0,3,0);
+    spotlight.matrix.scale(-0.1,-0.1,-0.1);
+    spotlight.matrix.translate(-0.5,-0.5,-0.5);
+    spotlight.render();
+
   
     //drawMap();
     //drawCubes();
