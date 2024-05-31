@@ -230,6 +230,7 @@ function renderAllShapes() {
     yellow.matrix.translate(-0.5, 0 + 0.1,0);
     //yellow.renderfast();
     if (g_normalOn) yellow.textureNum = -3;
+    //yellow.normalMatrix.setInverseOf(yellow.matrix).transpose;
     yellow.render();
   
     // draw tail 

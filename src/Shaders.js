@@ -8,6 +8,7 @@ var VSHADER_SOURCE = `
     varying vec2 v_UV;
     varying vec3 v_Normal;
     varying vec4 v_VertPos;
+    uniform mat4 u_NormalMatrix;
     uniform mat4 u_ModelMatrix;
     uniform mat4 u_GlobalRotateMatrix;
     uniform mat4 u_ViewMatrix;
@@ -17,7 +18,8 @@ var VSHADER_SOURCE = `
     void main() {
         gl_Position = u_ProjectionMatrix * u_ViewMatrix * u_GlobalRotateMatrix * u_ModelMatrix * a_Position;
         v_UV = a_UV;
-        v_Normal = a_Normal;
+        v_Normal = normalize(vec3(u_NormalMatrix * vec4(a_Normal,1)));
+
         //v_Normal = normalize(mat3(u_ModelMatrix) * a_Normal); // Correct normal transformation
         v_VertPos = u_ModelMatrix * a_Position;
     }`

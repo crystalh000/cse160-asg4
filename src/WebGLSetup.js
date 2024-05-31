@@ -116,6 +116,20 @@ function connectVariablesToGLSL() {
        console.log('Failed to get the storage location of u_cameraPos');
        return;
      }
+
+     u_lightOn = gl.getUniformLocation(gl.program, 'u_lightOn');
+    if (!u_lightOn) {
+      console.log('Failed to get the storage location of u_lightOn');
+      return;
+    }
+
+
+    u_NormalMatrix = gl.getUniformLocation(gl.program, 'u_NormalMatrix');
+    if (!u_NormalMatrix) {
+        console.log('Failed to get the storage location of u_NormalMatrix');
+        return;
+    }
+
   
      
     var identityM = new Matrix4();
